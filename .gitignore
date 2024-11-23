@@ -1,4 +1,9 @@
+# Node Modules for NPM Packets.
 node_modules/
 
+# Python Virtual Environments Folder.
 .env
+env/
+venv/
+
 localsettings.py
