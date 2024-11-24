@@ -1,3 +1,10 @@
 node_modules/
-
 .env
+
+# Python Virtual Environments Folder
+env/
+venv/
+
+# Development on local server. 
+localsettings.py
+*.sqlite3
