@@ -7,3 +7,4 @@ venv/
 
 # Development on local server. 
 localsettings.py
+*.sqlite3
