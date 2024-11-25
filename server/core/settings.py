@@ -41,10 +41,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'announcements.apps.AnnouncementsConfig',
+    'corsheaders', 
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'corsheaders.middleware.CorsMiddleware', 
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -55,6 +57,12 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'core.urls'
+
+# CORS Configuration. 
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:5500', 
+    'http://127.0.0.1:5500', 
+]
 
 TEMPLATES = [
     {
