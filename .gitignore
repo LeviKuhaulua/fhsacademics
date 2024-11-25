@@ -5,6 +5,7 @@ env/
 # Files for local development
 .env 
 local_settings.py
+db.sqlite3
 
 # Npm related 
 node_modules/
