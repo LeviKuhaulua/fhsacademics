@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'announcements.apps.AnnouncementsConfig',
-    'corsheaders', 
+    'corsheaders',
+    'rest_framework', 
 ]
 
 MIDDLEWARE = [
@@ -63,6 +64,27 @@ CORS_ALLOWED_ORIGINS = [
     'http://localhost:5500', 
     'http://127.0.0.1:5500', 
 ]
+
+# Rest Framework Configuration
+
+REST_FRAMEWORK = {
+    'DEFAULT_RENDERER_CLASSES': [
+        'rest_framework.renderer.JSONRenderer', 
+        'rest_framework.renderer.BrowsableAPIRenderer'
+    ],
+    'DEFAULT_PARSER_CLASSES': [
+        'rest_framework.parsers.JSONParser',
+        'rest_framework.parsers.FormParser', 
+        'rest_framework.parsers.FileUploadParser',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ],
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.IsAuthenticated',
+    ]
+}
 
 TEMPLATES = [
     {
@@ -147,3 +169,6 @@ try:
     print('Local Settings Imported')
 except ImportError: 
     print('Did Not Import Local Settings')
+    REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = {
+        'rest_framework.renderer.JSONRenderer'
+    }
