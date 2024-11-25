@@ -1,0 +1,10 @@
+# Python virtual environments
+venv/
+env/
+
+# Files for local development
+.env 
+local_settings.py
+
+# Npm related 
+node_modules/
