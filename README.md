@@ -13,6 +13,7 @@ how that can help prepare them for college. Students will learn the following:
 # Table of Contents
 
 1. [Getting Started](#Getting-Started)
+2. [Folder Structure](#Folder-Structure)
 
 
 # Getting Started
@@ -34,3 +35,9 @@ pipenv install --ignore-pipfile --> Downloads packages from Pipfile.lock
 2. Do whatchu need to do
 3. (**If you want**) Exit your virtual environment by typing in *exit* into the terminal. 
 
+# Folder Structure
+
+- **fhsacademics/**: Hosts the whole project.
+    - **server/**: Contains the logic / handling for the backend of the website. 
+        - **core/**: Main app settings for configuring things like the database and media files. 
+        - **announcements/**: App feature for allowing admins to post announcements about AP Program. 
