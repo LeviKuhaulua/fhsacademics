@@ -15,6 +15,8 @@ how that can help prepare them for college. Students will learn the following:
 1. [Getting Started](#Getting-Started)
 2. [Folder Structure](#Folder-Structure)
 
+2. [Folder Structure](#Folder-Structure)
+
 # Getting Started
 
 ## Django
@@ -42,44 +44,6 @@ pipenv install --ignore-pipfile --> Downloads packages from Pipfile.lock
 ## Basic Workflow
 
 1. Run `pipenv shell` in your terminal to load up the virtual environment 
-2. In another terminal, run `npm run dev` to load up development server for front end
-2. Make your changes
-3. End `npm run dev` by pressing <kbd>Ctrl</kbd>+<kbd>C</kbd> (Windows) or <kbd>Ctrl</kbd>+<kbd>Z</kbd> (Mac)
-4. (**If you want**) Exit your virtual environment by typing in *exit* into the terminal 
-
-
-
-# Folder Structure
-
-- **server/** &rarr; Django application. 
-    - **core/** &rarr; Main app that holds settings, configurations, and routes
-    - **announcements/** &rarr; App to handle announcement logic. 
-
-- **client/** &rarr; React application. 
-    - **node_modules/** &rarr; Helps get the React app running
-    - **src/** &rarr; Holds all the react pages, react components, assets, and styles
-
-- **public/** &rarr; Deployed frontend application.
-    - **assets/** &rarr; Any assets that are available to the public such as favicon icons and pictures 
-    - **dist/** &rarr; Stores the script file for each html page. 
-
-## Important Files
-
-**Server Side**: 
-
-- *urls.py* &rarr; Handles routing to different apps in the project or different views in the app
-
-- *views.py* &rarr; Logic behind what kind of HttpResponse is being returned by Django 
-
-- *models.py* &rarr; Defines how data will be stored in your database 
-
-- *tests.py* &rarr; Place to create your test cases for each app
-
-- *serializers.py* &rarr; How the data gets serialized to a readable format for the client (ex. JSON)
-
-**Client Side**: 
-
-- *styles.css* &rarr; Tailwind CSS output to that file 
-
-- *tailwind.css* &rarr; Defines Tailwind CSS directives that gets added into your css
+2. Do whatchu need to do
+3. (**If you want**) Exit your virtual environment by typing in *exit* into the terminal. 
 
