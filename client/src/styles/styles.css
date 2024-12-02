@@ -563,6 +563,6 @@ video {
   font-weight: 700;
 }
 
-.underline {
-  text-decoration-line: underline;
+.font-thin {
+  font-weight: 100;
 }
