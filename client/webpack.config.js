@@ -21,7 +21,7 @@ module.exports = {
     entry: getEntries('./src/pages'),
     output: {
         filename: '[name].js',
-        path: path.resolve(__dirname, '../public/dist'),
+        path: path.resolve(__dirname, '..', 'public', 'dist'),
         assetModuleFilename: 'assets/[name][ext][query]',
     }, 
     resolve: {

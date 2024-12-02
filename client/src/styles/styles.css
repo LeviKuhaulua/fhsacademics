@@ -562,3 +562,7 @@ video {
 .font-bold {
   font-weight: 700;
 }
+
+.font-thin {
+  font-weight: 100;
+}
