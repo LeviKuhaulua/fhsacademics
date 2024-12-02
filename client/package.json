@@ -5,8 +5,8 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "concurrently \"tailwind -i ./src/styles/tailwind.css -o ./src/styles/styles.css --watch\" \"webpack --mode development --watch\"",
-    "build": "concurrently \"tailwind -i ./src/styles/tailwind.css -o ./src/styles/styles.css\" \"webpack --mode production\""
+    "dev": "concurrently \"tailwind -i ./src/styles/tailwind.css -o ./src/styles/styles.css --watch\" \"webpack serve --config webpack.dev.js\"",
+    "build": "tailwind -i ./src/styles/tailwind.css -o ./src/styles/styles.css && webpack --config webpack.prod.js"
   },
   "keywords": [],
   "author": "",
