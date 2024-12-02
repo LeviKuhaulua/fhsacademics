@@ -18,7 +18,15 @@ module.exports = (merge(webpackConfig, {
         static: {
             directory: path.join(__dirname, '..', 'public'),
         },
-    }
+        // est. proxy so that it allows us to access API from frontend
+        proxy: [
+            {
+                context: ['/api'], 
+                target: 'http://localhost:8000/',
+            }
+        ], 
+    },
+    
     
     
 }));
