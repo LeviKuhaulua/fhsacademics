@@ -1,7 +1,10 @@
-import { merge } from 'webpack-merge';
-import webpackConfig from './webpack.config.js';
+const { merge } = require('webpack-merge');
+const webpackConfig = require('./webpack.config.js');
 
-
-module.exports(merge(webpackConfig, {
+module.exports = (merge(webpackConfig, {
     mode: 'production',
+    output: {
+        publicPath: './dist', 
+        clean: true,
+    }
 }));
