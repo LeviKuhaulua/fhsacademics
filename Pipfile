@@ -10,6 +10,7 @@ django-cors-headers = "*"
 pillow = "*"
 whitenoise = "*"
 psycopg = {extras = ["binary"], version = "~=3.1.8"}
+gunicorn = "*"
 
 [dev-packages]
 faker = "*"
