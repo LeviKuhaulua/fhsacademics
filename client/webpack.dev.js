@@ -10,7 +10,9 @@ module.exports = (merge(webpackConfig, {
         publicPath: '/dist/', 
     },
     devServer: {
-        open: true, 
+        open: true,
+        // allows dev server to be accessed externally (great for Docker)
+        host: '0.0.0.0', 
         port: 5500,
         // disabling Hot Module Replacement so that liveReload can be enabled 
         hot: false, 
