@@ -11,10 +11,12 @@ pillow = "*"
 whitenoise = "*"
 psycopg = {extras = ["binary"], version = "~=3.1.8"}
 gunicorn = "*"
+django-tailwind = "*"
 
 [dev-packages]
 faker = "*"
 python-dotenv = "*"
+django-tailwind = {extras = ["reload"], version = "*"}
 
 [scripts]
 dev = "python manage.py runserver"
