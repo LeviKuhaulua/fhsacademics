@@ -16,5 +16,8 @@ gunicorn = "*"
 faker = "*"
 python-dotenv = "*"
 
+[scripts]
+dev = "python manage.py runserver"
+
 [requires]
 python_version = "3.11"
