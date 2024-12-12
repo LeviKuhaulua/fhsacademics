@@ -55,7 +55,9 @@ pipenv install --ignore-pipfile --> Downloads packages from Pipfile.lock
 
 - **server** &rarr; Django application. 
     - **core** &rarr; Main app that holds settings, configurations, and routes
-    - **announcements** &rarr; App to handle announcement logic. 
+    - **announcements** &rarr; App to handle announcement logic
+    - **portal** &rarr; App to handle sign-in portal logic 
+    - **ap_classes** &rarr; App to handle AP Class logic
 
 - **client** &rarr; React application (Frontend) 
     - **node_modules** &rarr; Npm packages 
