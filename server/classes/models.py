@@ -22,4 +22,4 @@ class ApClass(models.Model):
     
     # Meta attributes
     class Meta:
-        verbose_name_plural = 'Classes'
+        verbose_name = "AP"
