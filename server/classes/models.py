@@ -3,7 +3,6 @@ from django.template.defaultfilters import slugify
 
 # Create your models here.
 class ApClass(models.Model):
-    id = models.AutoField(primary_key=True, editable=False)
     name = models.CharField(max_length=200, null=False, unique=True, help_text='Do not need to put \'AP\' before the class name')
     slug = models.SlugField(default='', blank=True, unique=True, help_text='''Unique link generated based on class name. 
                                                                               Example: classes/calculus instead of classes/9''')
