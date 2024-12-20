@@ -7,3 +7,6 @@ class ApClassAdmin(admin.ModelAdmin):
     prepopulated_fields = {'slug': ['name']}
 
 admin.site.register(ApClass, ApClassAdmin)
+admin.site.site_header = "Farrington AP Administration"
+admin.site.site_title = "Farrington Academics"
+admin.site.index_title = "Dashboard"
