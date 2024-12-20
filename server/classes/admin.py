@@ -9,13 +9,10 @@ class ApClassAdmin(admin.ModelAdmin):
     list_display = ['name', 'is_offered']
     actions = ['set_notoffered', 'set_offered']
     
-    @admin.display(description="Offered For Current School Year?", boolean=True)
-    def is_offered(self, obj):
-        return obj.is_active
     
     @admin.action(description='Set as not offered for current school year')
     def set_notoffered(self, request, queryset):
-        updates = queryset.update(is_active=False)
+        updates = queryset.update(is_offered=False)
         self.message_user(
             request,
             message = "Unable to make changes" if updates == 0 else "Successfully made changes",
@@ -24,7 +21,7 @@ class ApClassAdmin(admin.ModelAdmin):
 
     @admin.action(description='Set as offered for current school year')
     def set_offered(self, request, queryset):
-        updates = queryset.update(is_active=True)
+        updates = queryset.update(is_offered=True)
         self.message_user(
             request,
             message = "Unable to make changes" if updates == 0 else "Successfully made changes",
