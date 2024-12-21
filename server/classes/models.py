@@ -11,11 +11,11 @@ class ApClass(models.Model):
     subject = models.ForeignKey('Subject', 
                                 default='1', 
                                 null=False, 
-                                on_delete=models.PROTECT, 
+                                on_delete=models.RESTRICT, 
                                 help_text='Choose the subject that best relates to this class', 
                                 related_name='+')
-    available_to = models.ManyToManyField('GradeLevel')
- 
+    grade_levels = models.ManyToManyField('GradeLevel')
+    student_resource = models.URLField(null=True, help_text='Link for students to access helpful resources of this class if there are any')
 
     def __str__(self):
         """Returns class name prefixed with 'AP'."""
@@ -30,6 +30,27 @@ class ApClass(models.Model):
     # Meta attributes
     class Meta:
         verbose_name = 'AP'
+
+class ApClassPrereq(models.Model):
+    # Model to create the many-to-one relationship
+    ap = models.ForeignKey(ApClass, on_delete=models.CASCADE, default='1', null=False, related_name='prereqs')
+    prerequisite = models.CharField(max_length=50, default='', null=False, help_text="""Classes needed before a student can apply to the course. 
+                                                                                        Please enter full name of course""")
+
+    def __str__(self):
+        return self.prerequisite
+    
+    class Meta: 
+        verbose_name = 'Pre-requisite'
+
+
+class ApClassBenefit(models.Model):
+    # Model to create the many-to-one relationship
+    ap = models.ForeignKey(ApClass, on_delete=models.CASCADE, related_name='benefit')
+    benefit = models.CharField(max_length=75, default='', null=False, help_text='character limit: 75')
+
+    def __str__(self):
+        return self.benefit
 
 class Subject(models.Model):   
     subject = models.CharField(max_length=50)
