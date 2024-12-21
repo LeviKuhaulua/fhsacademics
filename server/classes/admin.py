@@ -1,16 +1,23 @@
 from django.contrib import admin
-from .models import ApClass, GradeLevel, Subject
+from .models import ApClass, ApClassPrereq, ApClassBenefit, GradeLevel, Subject 
 from django.contrib import messages
 
+class ApClassPrereqsInline(admin.StackedInline):
+    model = ApClassPrereq
+
+class ApClassBenefitsInline(admin.StackedInline):
+    model = ApClassBenefit
+
 # Register your models here.
-@admin.register(ApClass, )
+@admin.register(ApClass)
 class ApClassAdmin(admin.ModelAdmin): 
     # Allows slug to be generated when making a new class
     prepopulated_fields = {'slug': ['name']}
     list_display = ['name', 'subject','is_available']
     actions = ['set_notoffered', 'set_offered']
-    filter_horizontal = ['available_to']
-    
+    fields = [('name', 'subject'), 'slug', ('is_offered', 'grade_levels'), ('description', 'student_resource')]
+    filter_horizontal = ['grade_levels']
+    inlines = [ApClassPrereqsInline, ApClassBenefitsInline]
     
     @admin.display(description="Available Upcoming School Year?", boolean=True, ordering="-is_offered")
     def is_available(self, obj):
@@ -36,11 +43,11 @@ class ApClassAdmin(admin.ModelAdmin):
 
 @admin.register(GradeLevel)
 class GradeLevelAdmin(admin.ModelAdmin):
-    pass
+    actions = None
 
 @admin.register(Subject)
 class SubjectAdmin(admin.ModelAdmin):
-    pass
+    actions = None
 
 admin.site.site_header = "Farrington AP Administration"
 admin.site.site_title = "Farrington Academics"
