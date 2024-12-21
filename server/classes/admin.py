@@ -7,12 +7,16 @@ from django.contrib import messages
 class ApClassAdmin(admin.ModelAdmin): 
     # Allows slug to be generated when making a new class
     prepopulated_fields = {'slug': ['name']}
-    list_display = ['name', 'is_offered']
+    list_display = ['name', 'subject','is_available']
     actions = ['set_notoffered', 'set_offered']
     filter_horizontal = ['available_to']
     
     
-    @admin.action(description='Set as not offered for current school year')
+    @admin.display(description="Available Upcoming School Year?", boolean=True, ordering="-is_offered")
+    def is_available(self, obj):
+        return obj.is_offered
+
+    @admin.action(description='Set as not offered for upcoming school year')
     def set_notoffered(self, request, queryset):
         updates = queryset.update(is_offered=False)
         self.message_user(
@@ -21,7 +25,7 @@ class ApClassAdmin(admin.ModelAdmin):
             level = messages.ERROR if updates == 0 else messages.SUCCESS,
         )
 
-    @admin.action(description='Set as offered for current school year')
+    @admin.action(description='Set as offered for upcoming school year')
     def set_offered(self, request, queryset):
         updates = queryset.update(is_offered=True)
         self.message_user(
