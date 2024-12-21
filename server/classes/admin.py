@@ -18,6 +18,7 @@ class ApClassAdmin(admin.ModelAdmin):
     fields = [('name', 'subject'), 'slug', ('is_offered', 'grade_levels'), ('description', 'student_resource')]
     filter_horizontal = ['grade_levels']
     inlines = [ApClassPrereqsInline, ApClassBenefitsInline]
+    list_filter = ['is_offered', 'subject']
     
     @admin.display(description="Available Upcoming School Year?", boolean=True, ordering="-is_offered")
     def is_available(self, obj):
