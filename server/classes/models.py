@@ -6,7 +6,7 @@ class ApClass(models.Model):
     name = models.CharField(max_length=200, null=False, unique=True, help_text='Do not need to put \'AP\' before the class name')
     slug = models.SlugField(default='', blank=True, unique=True, help_text='''Unique link generated based on class name. 
                                                                               Example: classes/calculus instead of classes/9''')
-    is_offered = models.BooleanField(default=True, null=False, help_text='Check this box if class is offered for the current school year')
+    is_offered = models.BooleanField(default=True, null=False, help_text='Check this box if class will be offered for the upcoming school year')
     description = models.TextField(default='', null=False, help_text='Description of class')
     subject = models.ForeignKey('Subject', 
                                 default='1', 
