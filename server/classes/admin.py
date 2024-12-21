@@ -44,6 +44,16 @@ class ApClassAdmin(admin.ModelAdmin):
 @admin.register(GradeLevel)
 class GradeLevelAdmin(admin.ModelAdmin):
     actions = None
+    
+    # Grade Levels are ALWAYS consistent, therefore no need to modify them in any way. 
+    def has_delete_permission(self, request, obj=None):
+        return False
+    
+    def has_change_permission(self, request, obj=None):
+        return False
+    
+    def has_add_permission(self, request, obj=None):
+        return False
 
 @admin.register(Subject)
 class SubjectAdmin(admin.ModelAdmin):
