@@ -33,6 +33,11 @@ pipenv install --ignore-pipfile --> Downloads packages from Pipfile.lock
 
 &#x2606; Also have the `requirements.txt` file as an alternative to `pipenv` if it's giving you issues or you're more comfortable working with that instead
 
+### Starting off
+
+After getting the project initialized, make sure you run `python manage.py create_subjects.py` and `python manage.py create_grade_levels.py` to make sure that
+your *db.sqlite3* file will contain the necessary objects inside the **Subject** and **GradeLevel** model. 
+
 ## React
 
 1. `cd` into the *client* folder
