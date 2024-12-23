@@ -13,8 +13,8 @@ class ApClass(models.Model):
                                 on_delete=models.RESTRICT, 
                                 help_text='Choose the subject that best relates to this class', 
                                 related_name='+')
-    grade_levels = models.ManyToManyField('GradeLevel')
-    student_resource = models.URLField(blank=True, help_text='Link for students to access helpful resources of this class if there are any')
+    grade_level = models.ManyToManyField('GradeLevel')
+    student_resource = models.URLField(default='', blank=True, help_text='Link for students to access helpful resources of this class if there are any')
 
     def __str__(self):
         """Returns class name prefixed with 'AP'."""
