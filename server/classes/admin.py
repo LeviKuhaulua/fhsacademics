@@ -26,7 +26,7 @@ class ApClassAdmin(admin.ModelAdmin):
     inlines = [ApClassPrereqsInline, ApClassBenefitsInline]
     list_filter = ['is_offered', 'subject']
     
-    @admin.display(description="Available Upcoming School Year?", boolean=True, ordering="-is_offered")
+    @admin.display(description='Available Upcoming School Year?', boolean=True, ordering='-is_offered')
     def is_available(self, obj):
         return obj.is_offered
 
@@ -35,7 +35,7 @@ class ApClassAdmin(admin.ModelAdmin):
         updates = queryset.update(is_offered=False)
         self.message_user(
             request,
-            message = "Unable to make changes" if updates == 0 else "Successfully made changes",
+            message = 'Unable to make changes' if updates == 0 else 'Successfully made changes',
             level = messages.ERROR if updates == 0 else messages.SUCCESS,
         )
 
@@ -44,7 +44,7 @@ class ApClassAdmin(admin.ModelAdmin):
         updates = queryset.update(is_offered=True)
         self.message_user(
             request,
-            message = "Unable to make changes" if updates == 0 else "Successfully made changes",
+            message = 'Unable to make changes' if updates == 0 else 'Successfully made changes',
             level = messages.ERROR if updates == 0 else messages.SUCCESS,
         )
     
@@ -101,6 +101,6 @@ class GradeLevelAdmin(admin.ModelAdmin):
 class SubjectAdmin(admin.ModelAdmin):
     actions = None
 
-admin.site.site_header = "Farrington AP Administration"
-admin.site.site_title = "Farrington Academics"
-admin.site.index_title = "Dashboard"
+admin.site.site_header = 'Farrington AP Administration'
+admin.site.site_title = 'Farrington Academics'
+admin.site.index_title = 'Dashboard'
