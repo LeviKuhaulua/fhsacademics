@@ -45,7 +45,7 @@ class ApClassPrereq(models.Model):
 
 class ApClassBenefit(models.Model):
     # Model to create the many-to-one relationship
-    ap = models.ForeignKey(ApClass, on_delete=models.CASCADE, related_name='benefit')
+    ap = models.ForeignKey(ApClass, on_delete=models.CASCADE, related_name='benefits')
     benefit = models.CharField(max_length=75, blank=True, unique=True, null=True, help_text='character limit: 75')
 
     def __str__(self):
