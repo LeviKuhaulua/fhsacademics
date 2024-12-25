@@ -35,8 +35,7 @@ pipenv install --ignore-pipfile --> Downloads packages from Pipfile.lock
 
 ### Starting off
 
-After getting the project initialized, make sure you run `python manage.py create_subjects.py` and `python manage.py create_grade_levels.py` to make sure that
-your *db.sqlite3* file will contain the necessary objects inside the **Subject** and **GradeLevel** model. 
+After getting the project initialized, make sure you run `python manage.py create_subjects` and `python manage.py create_grade_levels` to make sure that your *db.sqlite3* file will contain the necessary objects inside the **Subject** and **GradeLevel** model. 
 
 ## React
 
