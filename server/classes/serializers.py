@@ -11,8 +11,7 @@ class ApClassSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ApClass
-        fields = '__all__'
-        read_only_fields = ['slug']
+        exclude = ['slug']
 
 
 
