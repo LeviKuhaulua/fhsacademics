@@ -1,6 +1,7 @@
 from django.urls import path
-from .views import index
+from .views import listAps, apClassDetail 
 
 urlpatterns = [
-    path('', index, name='index')
+    path('', listAps, name='all_aps'),
+    path('<slug:class_name>', apClassDetail, name='specific_ap')
 ]
