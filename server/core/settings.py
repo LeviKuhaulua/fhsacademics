@@ -70,7 +70,7 @@ CORS_ALLOWED_ORIGINS = [
 
 REST_FRAMEWORK = {
     'DEFAULT_RENDERER_CLASSES': [
-        'rest_framework.renderer.JSONRenderer', 
+        'rest_framework.renderers.JSONRenderer', 
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.SessionAuthentication',
@@ -162,13 +162,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.SmallAutoField'
 try: 
     from .local_settings import *
     print('Local Settings Imported')
-
-    # Needed to prevent isssue with django raising an AttributeError
-    REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = {
-        'rest_framework.renderer.JSONRenderer'
-    }
 except ImportError: 
     print('Did Not Import Local Settings')
-    REST_FRAMEWORK['DEFAULT_RENDERER_CLASSES'] = {
-        'rest_framework.renderer.JSONRenderer'
-    }
+    
