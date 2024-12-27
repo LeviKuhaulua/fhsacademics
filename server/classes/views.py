@@ -6,7 +6,7 @@ from .serializers import ApClassSerializer
 
 # Create your views here.
 @api_view(['GET'])
-def listAps(request):
+def apClassList(request):
     aps = ApClass.objects.all().select_related('subject').prefetch_related('grade_level', 'benefits', 'prereqs')
     serializer = ApClassSerializer(aps, many=True)
     return Response(data=serializer.data)
@@ -14,7 +14,6 @@ def listAps(request):
 
 @api_view(['GET'])
 def apClassDetail(request, class_name):
-
     try: 
         ap = ApClass.objects.get(slug=class_name)
         serializer = ApClassSerializer(ap)

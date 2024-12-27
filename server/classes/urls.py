@@ -1,7 +1,7 @@
 from django.urls import path
-from .views import listAps, apClassDetail 
+from .views import apClassList, apClassDetail 
 
 urlpatterns = [
-    path('', listAps, name='all_aps'),
+    path('', apClassList, name='all_aps'),
     path('<slug:class_name>', apClassDetail, name='specific_ap')
 ]

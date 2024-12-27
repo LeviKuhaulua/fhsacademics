@@ -11,7 +11,7 @@ class ApClassSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = ApClass
-        exclude = ['slug']
+        fields = '__all__'
 
 
 
