@@ -4,4 +4,6 @@ from .models import Event
 
 @admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
-    pass
+    fields = ['name', 'date', 'duration', 'location', 'meeting_link', 'resource', 'description']
+    list_display = ['__str__', 'location', 'date']
+    ordering = ['date']
