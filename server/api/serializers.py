@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import ApClass 
+from classes.models import ApClass 
 
 class ApClassSerializer(serializers.ModelSerializer):
     
@@ -12,7 +12,4 @@ class ApClassSerializer(serializers.ModelSerializer):
     class Meta:
         model = ApClass
         fields = '__all__'
-
-
-
 
