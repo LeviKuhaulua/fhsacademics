@@ -21,7 +21,11 @@ module.exports = (merge(webpackConfig, {
         // est. proxy so that it allows us to access API from frontend
         proxy: [
             {
+<<<<<<< HEAD
                 context: ['/classes', '/events'], 
+=======
+                context: ['/api'], 
+>>>>>>> cc9826fc844d31e81aa43b641e21f87d92a06e44
                 target: 'http://localhost:8000/',
             }
         ], 
