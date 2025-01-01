@@ -6,8 +6,10 @@ from datetime import datetime, time
 @admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
     fields = ['name', 'date', 'time', 'end','location', 'meeting_link', 'resource', 'description']
-    list_display = ['__str__', 'location', 'get_event_times']
+    list_display = ['name', 'location', 'get_event_times']
     ordering = ['date']
+    search_fields = ['name']
+    search_help_text = 'Search for events by name'
 
     @admin.display(description='Event Times')
     def get_event_times(self, obj):

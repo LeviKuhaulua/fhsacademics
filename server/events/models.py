@@ -15,5 +15,5 @@ class Event(models.Model):
     
 
     def __str__(self):
-        """Returns event name followed by the year that the event is being held"""
-        return f'{self.name} {self.date.year}'
+        """Returns event name"""
+        return self.name
