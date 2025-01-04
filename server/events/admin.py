@@ -1,11 +1,13 @@
 from django.contrib import admin
 from .models import Event
 from datetime import datetime, time
+from .forms import EventForm
 # Register your models here.
 
 @admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
-    fields = ['name', 'date', 'time', 'end','location', 'meeting_link', 'resource', 'description']
+    form = EventForm
+    fields = ['name', 'date', 'time', 'end', 'location', 'meeting_link', 'resource', 'description']
     list_display = ['name', 'location', 'get_event_times']
     ordering = ['date']
     search_fields = ['name']
