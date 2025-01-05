@@ -15,6 +15,7 @@ class EventAdmin(admin.ModelAdmin):
 
     @admin.display(description='Event Times')
     def get_event_times(self, obj):
+        # The formatted date would look something like this: Monday Dec 13, 2025
         formatted_date = datetime.strftime(obj.date, '%A %b %d, %Y')
         formatted_start = time.strftime(obj.start, '%I:%M%p')
         formatted_end = time.strftime(obj.end, '%I:%M%p')
