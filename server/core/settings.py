@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'classes',
+    'events', 
     'api', 
     'corsheaders',
     'rest_framework', 
@@ -78,7 +79,9 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
-    ]
+    ], 
+    'DATE_FORMAT': '%m-%d-%Y',
+    'TIME_FORMAT': '%I:%M %p', 
 }
 
 TEMPLATES = [
@@ -145,6 +148,10 @@ USE_I18N = True
 
 USE_TZ = True
 
+TIME_INPUT_FORMATS = [
+    '%I:%M %p', 
+    '%I:%M%p'
+]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
