@@ -11,8 +11,7 @@ class ApClassBenefitsInline(admin.StackedInline):
 # Register your models here.
 @admin.register(ApClass)
 class ApClassAdmin(admin.ModelAdmin): 
-    # Allows slug to be generated when making a new class
-    prepopulated_fields = {'slug': ['name']}
+    readonly_fields = ['slug']
     list_display = ['name', 'subject','is_available']
     actions = ['set_notoffered', 
                'set_offered', 
@@ -21,9 +20,24 @@ class ApClassAdmin(admin.ModelAdmin):
                'set_available_10', 
                'set_available_11', 
                'set_available_12']
-    fields = [('name', 'subject'), 'slug', ('is_offered', 'grade_level'), ('description', 'student_resource')]
-    filter_horizontal = ['grade_level']
+    fieldsets = [
+        (
+            # Important (and minimum) information to create or update object
+            'Important Information', 
+            {
+                'fields': [('name', 'subject'), 'slug', ('is_offered', 'grade_level'), 'description'], 
+            }
+        ), 
+        (
+            # Can be left out in add or change form
+            'Optional Information', 
+            {
+                'fields': ['student_resource']
+            }
+        )
+    ]
     inlines = [ApClassPrereqsInline, ApClassBenefitsInline]
+    filter_horizontal = ['grade_level']
     list_filter = ['is_offered', 'subject']
     
     @admin.display(description='Available Upcoming School Year?', boolean=True, ordering='-is_offered')
