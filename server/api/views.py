@@ -20,4 +20,4 @@ class EventList(generics.ListAPIView):
 class EventDetail(generics.RetrieveAPIView):
     queryset = Event.objects.all()
     serializer_class = EventSerializer
-    lookup_field = 'id'
+    lookup_field = 'slug'
