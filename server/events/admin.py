@@ -7,7 +7,7 @@ from .forms import EventForm
 @admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
     form = EventForm
-    fields = ['name', 'date', 'time', 'end', 'location', 'meeting_link', 'resource', 'description']
+    fields = ['name', 'date', 'start', 'end', 'location', 'meeting_link', 'resource', 'description']
     list_display = ['name', 'location', 'get_event_times']
     ordering = ['date']
     search_fields = ['name']
@@ -15,8 +15,8 @@ class EventAdmin(admin.ModelAdmin):
 
     @admin.display(description='Event Times')
     def get_event_times(self, obj):
-        formatted_date = datetime.strftime(obj.date, '%b %d, %Y')
-        formatted_start = time.strftime(obj.time, '%I:%M%p')
+        formatted_date = datetime.strftime(obj.date, '%A %b %d, %Y')
+        formatted_start = time.strftime(obj.start, '%I:%M%p')
         formatted_end = time.strftime(obj.end, '%I:%M%p')
         return f'{formatted_date} from {formatted_start}-{formatted_end}'
     
