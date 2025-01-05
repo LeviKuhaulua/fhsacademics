@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from classes.models import ApClass 
+from classes.models import ApClass
+from events.models import Event
 
 class ApClassSerializer(serializers.ModelSerializer):
     
@@ -13,3 +14,8 @@ class ApClassSerializer(serializers.ModelSerializer):
         model = ApClass
         fields = '__all__'
 
+class EventSerializer(serializers.ModelSerializer):
+    
+    class Meta:
+        model = Event
+        fields = '__all__'
