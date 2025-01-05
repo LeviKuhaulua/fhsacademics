@@ -79,7 +79,9 @@ REST_FRAMEWORK = {
     ],
     'DEFAULT_PERMISSION_CLASSES': [
         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
-    ]
+    ], 
+    'DATE_FORMAT': '%m-%d-%Y',
+    'TIME_FORMAT': '%I:%M %p', 
 }
 
 TEMPLATES = [
