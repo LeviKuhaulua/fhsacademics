@@ -7,7 +7,8 @@ from .forms import EventForm
 @admin.register(Event)
 class EventAdmin(admin.ModelAdmin):
     form = EventForm
-    fields = ['name', 'date', 'start', 'end', 'location', 'meeting_link', 'resource', 'description']
+    readonly_fields = ['slug']
+    fields = ['name', 'date', 'start', 'end', 'location', 'meeting_link', 'resource', 'description', 'slug']
     list_display = ['name', 'location', 'get_event_times']
     ordering = ['date']
     search_fields = ['name']
