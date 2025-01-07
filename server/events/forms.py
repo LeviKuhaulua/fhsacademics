@@ -3,6 +3,7 @@ from django.forms.widgets import SelectDateWidget, TimeInput
 from django.forms import ValidationError
 from django.utils.translation import gettext as _
 from core.settings import TIME_INPUT_FORMATS
+from datetime import date
 
 class EventForm(ModelForm):
     
@@ -23,6 +24,7 @@ class EventForm(ModelForm):
         than the start time
         """
         cleaned_data = super().clean()
+        form_date = cleaned_data.get('date')
         start_time = cleaned_data.get('start')
         end_time = cleaned_data.get('end')
         fields_are_empty = start_time is None or end_time is None
@@ -42,6 +44,13 @@ class EventForm(ModelForm):
                 _('End time is the same as your start time! Value: %(value)s'),
                 code='invalid',
                 params={'value': end_time.__format__('%I:%M %p')},
+            )
+        
+        if form_date < date.today():
+            raise ValidationError(
+                _('Cannot have date for event be in the past! Date: %(value)s'),
+                code='invalid',
+                params={'value': form_date.__format__('%b %d, %Y')}
             )
         
         
