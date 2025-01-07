@@ -41,7 +41,6 @@ class ApClass(models.Model):
 class Prerequisite(models.Model):
     prerequisite = models.CharField(
         max_length=50, 
-        blank=True, 
         unique=True, 
         null=True, 
         help_text="""Classes needed before a student can apply to the course. 
