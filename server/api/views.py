@@ -4,12 +4,12 @@ from events.models import Event
 from .serializers import ApClassSerializer, EventSerializer
 
 class ApClassList(generics.ListAPIView):
-    queryset = ApClass.objects.all().select_related('subject').prefetch_related('grade_level', 'benefits', 'prereqs')
+    queryset = ApClass.objects.all().select_related('subject').prefetch_related('grade_level', 'prerequisite').order_by('subject__subject')
     serializer_class = ApClassSerializer
 
 
 class ApClassDetail(generics.RetrieveAPIView):
-    queryset = ApClass.objects.all().select_related('subject').prefetch_related('grade_level', 'benefits', 'prereqs')
+    queryset = ApClass.objects.all().select_related('subject').prefetch_related('grade_level', 'prerequisite')
     serializer_class = ApClassSerializer
     lookup_field = 'slug'
 
