@@ -1,25 +1,44 @@
 from django.contrib import admin
-from .models import ApClass, ApClassPrereq, ApClassBenefit, GradeLevel, Subject 
+from .models import ApClass, GradeLevel, Subject, Prerequisite 
 from django.contrib import messages
 
-class ApClassPrereqsInline(admin.StackedInline):
-    model = ApClassPrereq
 
-class ApClassBenefitsInline(admin.StackedInline):
-    model = ApClassBenefit
+@admin.register(Prerequisite)
+class PrerequisiteAdmin(admin.ModelAdmin):
+    # I don't see a use-case for having any actions in the admin panel for this 
+    actions = None
 
-# Register your models here.
+@admin.register(Subject)
+class SubjectAdmin(admin.ModelAdmin):
+    # I don't see a use-case here either for having any actions in admin panel
+    actions = None
+
+@admin.register(GradeLevel)
+class GradeLevelAdmin(admin.ModelAdmin):
+    actions = None
+    
+    # Grade Levels are ALWAYS consistent, therefore no need to modify them in any way. 
+    def has_delete_permission(self, request, obj=None):
+        return False
+    
+    def has_change_permission(self, request, obj=None):
+        return False
+    
+    def has_add_permission(self, request, obj=None):
+        return False
+
 @admin.register(ApClass)
 class ApClassAdmin(admin.ModelAdmin): 
     readonly_fields = ['slug']
     list_display = ['name', 'subject','is_available']
-    actions = ['set_notoffered', 
-               'set_offered', 
-               'set_available_all', 
-               'set_available_9', 
-               'set_available_10', 
-               'set_available_11', 
-               'set_available_12']
+    actions = [
+        'set_notoffered', 
+        'set_offered', 
+        'set_available_all', 
+        'set_available_9', 
+        'set_available_10', 
+        'set_available_11', 
+        'set_available_12'] 
     fieldsets = [
         (
             # Important (and minimum) information to create or update object
@@ -32,12 +51,11 @@ class ApClassAdmin(admin.ModelAdmin):
             # Can be left out in add or change form
             'Optional Information', 
             {
-                'fields': ['student_resource']
+                'fields': ['student_resource', 'prerequisite', 'benefits']
             }
         )
     ]
-    inlines = [ApClassPrereqsInline, ApClassBenefitsInline]
-    filter_horizontal = ['grade_level']
+    filter_horizontal = ['grade_level', 'prerequisite']
     list_filter = ['is_offered', 'subject']
     
     @admin.display(description='Available Upcoming School Year?', boolean=True, ordering='-is_offered')
@@ -97,23 +115,8 @@ class ApClassAdmin(admin.ModelAdmin):
         for c in queryset:
             c.grade_level.add(sn)
 
-@admin.register(GradeLevel)
-class GradeLevelAdmin(admin.ModelAdmin):
-    actions = None
-    
-    # Grade Levels are ALWAYS consistent, therefore no need to modify them in any way. 
-    def has_delete_permission(self, request, obj=None):
-        return False
-    
-    def has_change_permission(self, request, obj=None):
-        return False
-    
-    def has_add_permission(self, request, obj=None):
-        return False
 
-@admin.register(Subject)
-class SubjectAdmin(admin.ModelAdmin):
-    actions = None
+
 
 admin.site.site_header = 'Farrington AP Administration'
 admin.site.site_title = 'Farrington Academics'
