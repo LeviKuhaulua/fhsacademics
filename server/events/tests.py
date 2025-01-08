@@ -25,6 +25,11 @@ class EventTestCase(TestCase):
             end='10:00:00',
         )
 
+    def test_str(self):
+        """Verifies the __str__ method of Event model returns its name"""
+        event = Event.objects.get(name='All Information')
+        self.assertEqual(event.__str__(), event.name)
+
     def test_slug(self):
         """Verifies that slug is populated when Event object is created"""
         event = Event.objects.get(name='All Information')
