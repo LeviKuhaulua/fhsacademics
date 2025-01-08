@@ -1,3 +1,6 @@
 from django.test import TestCase
+from .models import ApClass, Subject, Prerequisite, GradeLevel
 
-# Create your tests here.
+class ApClassTestCase(TestCase):
+    # To be edited later
+    pass
