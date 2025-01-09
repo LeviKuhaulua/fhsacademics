@@ -11,18 +11,21 @@ class ApClass(models.Model):
     student_resource = models.URLField(
         default='', 
         blank=True, 
-        help_text='Link for students to access helpful resources of this class if there are any')
+        help_text='Link for students to access helpful resources of this class if there are any'
+    )
     subject = models.ForeignKey(
         'Subject', 
         default='1', 
         on_delete=models.RESTRICT, 
         help_text='Choose the subject that best relates to this class', 
-        related_name='+')
+        related_name='+'
+    )
     slug = models.SlugField(
         blank=True, 
         unique=True, 
         help_text='''Unique link generated based on class name. 
-        Example: classes/calculus instead of classes/9''')
+        Example: classes/calculus instead of classes/9'''
+    )
  
     def __str__(self):
         """Returns class name prefixed with 'AP'."""
@@ -44,7 +47,8 @@ class Prerequisite(models.Model):
         unique=True, 
         null=True, 
         help_text="""Classes needed before a student can apply to the course. 
-        Please enter full name of course""")
+        Please enter full name of course"""
+    )
 
     def __str__(self):
         return self.prerequisite

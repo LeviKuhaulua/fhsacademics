@@ -38,7 +38,8 @@ class ApClassAdmin(admin.ModelAdmin):
         'set_available_9', 
         'set_available_10', 
         'set_available_11', 
-        'set_available_12'] 
+        'set_available_12'
+    ] 
     fieldsets = [
         (
             # Important (and minimum) information to create or update object
