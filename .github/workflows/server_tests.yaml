@@ -35,15 +35,15 @@ jobs:
             - name: Run Tests - Events
               uses: VaultVulp/action-pipenv@v2.0.1
               with: 
-                command: run test events
+                command: run python manage.py test events
             
             - name: Run Tests - Classes
               uses: VaultVulp/action-pipenv@v2.0.1
               with: 
-                command: run test classes
+                command: run python manage.py test classes 
             
             - name: Run Tests - API
               uses: VaultVulp/action-pipenv@v2.0.1
               with:
-                command: run test api  
+                command: run python manage.py test api
                 
