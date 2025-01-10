@@ -31,8 +31,10 @@ jobs:
 
         steps:
             - uses: actions/checkout@v4
+            
+            - run: cd server
 
-            - name: Run Tests - Events
+            - name: Run Tests - Events  
               uses: VaultVulp/action-pipenv@v2.0.1
               with: 
                 command: run python manage.py test events
