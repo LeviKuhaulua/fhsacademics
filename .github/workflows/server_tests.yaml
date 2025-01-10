@@ -1,0 +1,49 @@
+name: Server Tests
+
+on: 
+    pull_request:
+        branches: 
+            - main
+        paths-ignore: 
+            - .github/**/*
+            - ./README.md
+    workflow_dispatch: 
+
+jobs:
+    download_dependencies:
+        name: Download Project Dependencies
+        runs-on: ubuntu-latest
+
+        steps: 
+            - uses: actions/checkout@v4
+
+            - name: Install Dependencies
+              uses: VaultVulp/action-pipenv@v2.0.1
+              with:
+                command: install -d --ignore-pipfile
+            
+    
+    run_tests: 
+        name: Run Python Tests
+        needs: download_dependencies
+        runs-on: ubuntu-latest
+        
+
+        steps:
+            - uses: actions/checkout@v4
+
+            - name: Run Tests - Events
+              uses: VaultVulp/action-pipenv@v2.0.1
+              with: 
+                command: run test events
+            
+            - name: Run Tests - Classes
+              uses: VaultVulp/action-pipenv@v2.0.1
+              with: 
+                command: run test classes
+            
+            - name: Run Tests - API
+              uses: VaultVulp/action-pipenv@v2.0.1
+              with:
+                command: run test api  
+                
