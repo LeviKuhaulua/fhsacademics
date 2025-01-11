@@ -171,4 +171,15 @@ try:
     print('Local Settings Imported')
 except ImportError: 
     print('Did Not Import Local Settings')
-    
+
+# This is for the actions workflow
+try: 
+    import sys
+
+    if 'test' in sys.argv:
+        DATABASES['default'] = {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': 'db.sqlite3',
+        }
+except ImportError:
+    print('Unable to access system arguments')
