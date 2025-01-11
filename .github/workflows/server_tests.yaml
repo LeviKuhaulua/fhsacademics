@@ -35,6 +35,8 @@ jobs:
                 pipenv install -d --ignore-pipfile
 
             - name: Run Tests
+              env: 
+                SECRET_KEY: ${{ secrets.SECRET_KEY }}
               run: pipenv run python manage.py test
               working-directory: ./server
             
