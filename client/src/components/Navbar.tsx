@@ -8,10 +8,10 @@ const Navbar = () => {
                // Add more links to array if needed
                [
                    ['Home', '/'],
-                   ['About', '/'],
-                   ['Contact', '/'],
-                   ['Classes', '/'],
-                   ['Events', '/'], 
+                   ['About', '/about.html'],
+                   ['Contact', '/contact.html'],
+                   ['Classes', '/classes.html'],
+                   ['Events', '/events.html'], 
                ].map(([ title, url ]) => {
                    return <a href={url} key={title}>{title}</a> 
                })
